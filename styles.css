@@ -132,7 +132,7 @@ body {
         linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
     background-size: 100px 100px;
     background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
-    animation: moveBackground 55s linear infinite;
+    animation: moveBackground 155s linear infinite;
     transform-origin: center;
 }
 
@@ -316,3 +316,25 @@ footer {
     background-color: #cccccc;
     cursor: not-allowed;
 } 
+/* Style for the PDF viewer section */
+.pdf-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Style for the heading */
+.pdf-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for the iframe */
+.pdf-frame {
+    width: 80%; /* Adjust width as needed */
+    height: 600px; /* Adjust height as needed */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
