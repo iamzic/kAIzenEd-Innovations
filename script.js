@@ -49,28 +49,58 @@ animateOnScroll();
 // Form submission handling
 const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
+        const submitButton = contactForm.querySelector('.submit-button');
+        const originalButtonText = submitButton.textContent;
         
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.textContent = 'Thank you for your message! We will get back to you soon.';
-        contactForm.appendChild(successMessage);
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            successMessage.remove();
-        }, 5000);
+        try {
+            // Disable the submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            // Submit the form
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                contactForm.appendChild(successMessage);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Remove success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 5000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            // Show error message
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+            contactForm.appendChild(errorMessage);
+            
+            // Remove error message after 5 seconds
+            setTimeout(() => {
+                errorMessage.remove();
+            }, 5000);
+        } finally {
+            // Re-enable the submit button
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
     });
 } 
