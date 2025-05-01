@@ -319,7 +319,7 @@ footer {
 /* Style for the PDF viewer section */
 .pdf-section {
     padding: 20px;
-    background-color: #030008;
+    background-color: #2b3292ce;
     text-align: center;
 }
 
@@ -327,14 +327,26 @@ footer {
 .pdf-section h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
+    color: #9194be;
 }
 
 /* Style for the iframe */
 .pdf-frame {
-    width: 80%; /* Adjust width as needed */
-    height: 600px; /* Adjust height as needed */
-    border: 2px solid #404786;
+    width: 70%; /* Adjust width as needed */
+    height: 800px; /* Adjust height as needed */
+    border: 1px solid #404786;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the About section */
+.about-content ul {
+    margin-left: 20px; /* Adjust the left margin to align with the paragraph */
+    padding-left: 0; /* Remove default padding */
+    list-style-position: inside; /* Ensure bullets are inside the content box */
+}
+
+.about-content ul li {
+    margin-bottom: 8px; /* Add spacing between list items */
+    line-height: 1.6; /* Improve readability */
 }
