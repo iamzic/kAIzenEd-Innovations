@@ -115,6 +115,7 @@ body {
     height: 100%;
     background: linear-gradient(45deg, rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8));
     z-index: 0;
+    overflow: hidden;
 }
 
 .animated-background::before {
@@ -122,11 +123,17 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="0.5"/></svg>') repeat;
-    opacity: 0.1;
+    width: 200%;
+    height: 200%;
+    background: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
+    background-size: 100px 100px;
+    background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
     animation: moveBackground 20s linear infinite;
+    transform-origin: center;
 }
 
 /* Sections */
@@ -241,11 +248,11 @@ footer {
 }
 
 @keyframes moveBackground {
-    from {
-        transform: translate(0, 0);
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
     }
-    to {
-        transform: translate(100px, 100px);
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
