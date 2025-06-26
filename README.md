@@ -1,6 +1,5 @@
-# Kaizen Learning Solutions Website
+# kAIzenEd Innovations Website
 
-A modern, responsive website for Kaizen Learning Solutions with animated sections and interactive elements.
 
 ## Features
 
